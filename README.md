@@ -87,7 +87,10 @@ Simple home page with header menu connections to home, fish and create a new fis
 
 <strong>Fish page</strong><br>
 Page showing a list of fishes details such as name, selling price, spawn rate	and shadow size, have a create, edit and delete fish buttons. 
-![fish](/public/images/fish.png)<br>
+
+![fish](https://user-images.githubusercontent.com/44788167/213708265-358adb61-840e-4413-aa8b-f52347fb091b.png)
+
+
 
 <strong>Create fish page</strong><br>
 Page with inputs to create a new fish and add it to database.
