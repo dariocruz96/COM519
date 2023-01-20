@@ -48,6 +48,38 @@ This web application structure is based on Model, Views and Controllers (MVC str
 <strong>Diagram</strong><br>
 ![Diagram](/public/images/diagram.png)<br>
 
+<strong>MODELS</strong><br>
+To connect to the database used mongoose, reading and writing the properties needed for the app and using some data validation that will make sure the user inputs the correct format to be inserted in the database.
+
+
+```
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
+
+const fishSchema = new Schema(
+  {
+    Number: {
+      type: Number,
+    },
+    Name: {
+      type: String,
+      required: [true, "Name is required"],
+    },
+    Sell: {
+      type: Number,
+      required: [true, "Price is required"],
+    },
+    SpawnRates: [String],
+    Where: String,
+    Shadow: String,
+    //"Total Catches to Unlock": String,
+  },
+  { timestamps: false }
+);
+
+module.exports = mongoose.model("Fish", fishSchema);
+```
+
 
 <strong> Home page </strong><br>
 Simple home page with header menu connections to home, fish and create a new fish pages, three images and a footer with some hyperlinks.
@@ -64,6 +96,109 @@ Page with inputs to create a new fish and add it to database.
 <strong>Edit fish page</strong><br>
 Page with inputs to change a fish details, showing the existing details.
 ![edit-fish](/public/images/edit-fish.png)<br>
+
+
+<strong>CONTROLLERS</strong><br>
+
+To be middle term to the database and the views, the controllers help us receive and sent the information we need.
+We got some code retrieving, deleting , updating, editing and creating records.
+
+```{css, echo=FALSE}
+pre {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+pre[class] {
+  max-height: 100px;
+}
+
+exports.list = async (req, res) => {
+  const limit = parseInt(req.query.limit); // Make sure to parse the limit to number
+  try {
+    const page = parseInt(req.query.page); // Make sure to parse the skip to number
+    const skip = (page - 1) * limit;
+    const totalFishes = await Fish.find({}).count();
+    const fishes = await Fish.find({ page })
+      .sort({ Name: 1 })
+      .skip(skip)
+      .limit(limit);
+
+    res.render("fishes", {
+      fishes: fishes,
+      totalFishes,
+      message: req.query?.message,
+      limit,
+      page,
+    });
+  } catch (e) {
+    res.status(404).send({ message: "could not list fishes" });
+  }
+};
+
+exports.delete = async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Fish.findByIdAndRemove(id);
+    res.redirect("/fishes");
+  } catch (e) {
+    res.status(404).send({
+      message: `could not delete record ${id}.`,
+    });
+  }
+};
+
+exports.update = async (req, res) => {
+  const id = req.params.id;
+  try {
+    await Fish.updateOne({ _id: id }, req.body);
+    const fish = await Fish.findById(id);
+    res.redirect(`/fishes/?message= ${fish.Name} as been updated.`);
+  } catch (e) {
+    if (e.errors) {
+      console.log(e.errors);
+      return res.render("update-fish", { errors: e.errors });
+    }
+
+    res.status(404).send({
+      message: `could not update fish: ${id}.`,
+    });
+  }
+};
+
+exports.edit = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const fish = await Fish.findById(id);
+    res.render("update-fish", { fish: fish, id: id, errors: {} });
+  } catch (e) {
+    res.status(404).send({
+      message: `could not find fish ${id}.`,
+    });
+  }
+};
+
+exports.create = async (req, res) => {
+  let fish = new Fish({
+    Name: req.body.name,
+    Number: req.body.number,
+    Sell: req.body.price,
+    SpawnRates: [req.body.spawn],
+    Shadow: req.body.shadow,
+  });
+
+  try {
+    await fish.save();
+    res.redirect(`/fishes/?message=${req.body.name} has been created`);
+  } catch (e) {
+    if (e.errors) {
+      return res.render("create-fish", { errors: e.errors });
+    }
+    return res.status(400).send({ message: JSON.parse(e) });
+  }
+};
+
+```
 
 # Key Design Decisions
 
