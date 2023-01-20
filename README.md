@@ -65,7 +65,7 @@ Page with inputs to create a new fish and add it to database.
 Page with inputs to change a fish details, showing the existing details.
 ![edit-fish](/public/images/edit-fish.png)<br>
 
-# Key Design Decisions!
+# Key Design Decisions
 
 I decided to go with a really simple, user-friendly design, not a lot of options or links, not a lot of images, simple to use and no explanation need at all.
 
@@ -80,6 +80,11 @@ Mongoose prived a unique ID for each record and so it became very simple to inte
 # Security and Scalability
 
 I didn't provide any security to the web app which is something that can be done if this would be taken forward to a full project or a complete market ready app by creating user authentication and restrict access to some features.
-Scalating this proof of concept web application could be creating a full Animal Crossing help tool, using all the collections and properties provided in the Kaggle dataset and provide help with any aspect of the game to players. Doing a better styling would improve the web app a lot as well.
+Going forward with this proof of concept web application could be creating a full Animal Crossing help tool, using all the collections and properties provided in the Kaggle dataset and provide help with any aspect of the game to players. 
+Doing a better styling would improve the web app a lot as well.
 
 # Conclusion and reflection
+
+Deploying this project in Cyclic makes it accessible to everyone and MongoDB/Mongoose allowed me to easly work with database, which following the MVC structure made it really simple and straight forward to create the web application.
+Working with Git allowed to to go back in work a few times to confirmed to work versions and even work from different PCs and places.
+While creating the first funcionalities gave a bit of work, the more there was to do the simpler it became, getting used to the structure flow and having some code as base made it possible to quickly add features and funcionalities.
