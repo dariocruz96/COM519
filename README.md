@@ -1,8 +1,10 @@
 # COM519
-Avanced Database Systems (COM519) - Assessment 1: Project with Report
+Avanced Database Systems (COM519) - Assessment 1: Proof of concept data-driven full stack web-application
+
 Link to github repository: https://https://github.com/dariocruz96/COM519/<br>
-Hosted on Cyclic: https://doubtful-gray-tiara.cyclic.app/<br>
+Hosted on Cyclic: https://animal-crossing-fish.cyclic.app/<br>
 Contributer: <strong>Dario Cruz</strong>
+
 # How to Setup the Project 
 - Download the zip file of the project.
 - Unzip it wherever you want.
