@@ -41,7 +41,9 @@ In the end of the day the same problems remained:
 
 # System Overview
 
-# Key Design Decisions
+![Home](/public/images/home.png)<br>
+# Key Design Decisions!
+
 
 # Database Design
 
