@@ -67,13 +67,19 @@ Page with inputs to change a fish details, showing the existing details.
 
 # Key Design Decisions!
 
+I decided to go with a really simple, user-friendly design, not a lot of options or links, not a lot of images, simple to use and no explanation need at all.
+
 
 # Database Design
 
-
+I used a single collection because it provided me with all the information I needed and even "ignored" a few properties which I didn't find it important to be seen.
+Mongoose prived a unique ID for each record and so it became very simple to interact with the database.
 ![database](/public/images/database.png)<br>
 
 
 # Security and Scalability
+
+I didn't provide any security to the web app which is something that can be done if this would be taken forward to a full project or a complete market ready app by creating user authentication and restrict access to some features.
+Scalating this proof of concept web application could be creating a full Animal Crossing help tool, using all the collections and properties provided in the Kaggle dataset and provide help with any aspect of the game to players. Doing a better styling would improve the web app a lot as well.
 
 # Conclusion and reflection
