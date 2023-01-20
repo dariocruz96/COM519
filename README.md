@@ -103,16 +103,9 @@ Page with inputs to change a fish details, showing the existing details.
 To be middle term to the database and the views, the controllers help us receive and sent the information we need.
 We got some code retrieving, deleting , updating, editing and creating records.
 
-```{css, echo=FALSE}
-pre {
-  max-height: 300px;
-  overflow-y: auto;
-}
 
-pre[class] {
-  max-height: 100px;
-}
 
+```
 exports.list = async (req, res) => {
   const limit = parseInt(req.query.limit); // Make sure to parse the limit to number
   try {
@@ -197,7 +190,6 @@ exports.create = async (req, res) => {
     return res.status(400).send({ message: JSON.parse(e) });
   }
 };
-
 ```
 
 # Key Design Decisions
