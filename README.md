@@ -41,7 +41,7 @@ In the end of the day the same problems remained:
 
 # System Overview
 
-I used mongodb atlas to help me with database and fish collection (Kaggle dataset) for data.
+I used mongodb atlas to help me with my non-relational database and fish collection (Kaggle dataset) for data.
 
 This web application structure is based on Model, Views and Controllers (MVC structure), where the user will interact with views (web pages), the view pages will send requests to controllers,  the controllers will write in the models and the models will store data in our database (MongoDB), going the other way around, database will retrieve data to the models, the controllers will read from the models sending a response to views, which will be visible to the user.
 
@@ -69,6 +69,10 @@ Page with inputs to change a fish details, showing the existing details.
 
 
 # Database Design
+
+
+![database](/public/images/database.png)<br>
+
 
 # Security and Scalability
 
